@@ -1,0 +1,19 @@
+{
+  "name": "unheap",
+  "version": "0.0.1",
+  "author": "Mark Serbol <markserbol@gmail.com>",
+  "description": "A youtube lightweight player.",
+  "private": true,
+  "dependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint" : "*",
+    "grunt-contrib-uglify" : "*",
+    "grunt-contrib-sass": "*",
+    "grunt-cssc": "*",
+    "grunt-contrib-watch": "*"
+  },
+  "license"     : "BSD2",
+  "engines": {
+    "node"      : ">=0.8"
+  }
+}
