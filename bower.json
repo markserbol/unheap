@@ -1,0 +1,19 @@
+{
+  "name": "unheap",
+  "version": "0.0.1",
+  "authors": [
+    "Mark Serbol <markserbol@gmail.com>"
+  ],
+  "license": "BSD2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "normalize.css": "*",
+    "fontawesome": "*"
+  }
+}
