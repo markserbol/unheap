@@ -1,0 +1,50 @@
+.masthead {
+  position: relative;
+  height: $header-size;
+  background: #fff;
+  border-bottom: 1px solid $color-border;
+  box-shadow: rgba(0, 0, 0, 0.04) 0 1px;
+  
+  .toggle-btn {
+    position: absolute;
+    top: 0;
+    height: $header-size;
+    width: $header-size;
+    padding: 0;
+    background: none;
+    border-color: $color-border;
+    border-style: solid;
+    font-size: 20px;
+    color: rgba($color-text, 0.74);
+    outline: 0;
+    
+    &:hover {
+      background: #f1f1f1;
+    }
+  }
+  
+  .collapse-search-toggle {
+    left: 0;
+    border-width: 0 1px 1px 0;
+  }
+  
+  .collapse-playlist-toggle {
+    right: 0;
+    border-width: 0 0 1px 1px;
+  }
+  
+  
+  .brand {
+    margin: 0 $header-size;
+    text-align: center;
+    color: $color-primary;
+    
+    .brand__name {
+      margin: 0;
+      height: $header-size;
+      line-height: $header-size;
+      font-size: 24px;
+    }
+  }
+  
+}

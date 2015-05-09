@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Unheap</title>
+    
+    <link rel="stylesheet" href="public/vendor/normalize.css/normalize.css">
+  </head>
+  
+  <body>
+   
+    <div class="masthead">
+      <div class="brand">
+        <h1 class="brand__name">Unheap</h1>
+      </div>
+      <button class="collapse-search-toggle toggle-btn">
+        <i class="fa fa-search"></i>
+      </button>
+      
+      <button class="collapse-playlist-toggle toggle-btn">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div> 
+    
+    <div class="search-panel collapsed sidebar">
+      <div class="search-form">
+        <input id="query" class="search-form-input" placeholder="Search" autocomplete="off" disabled>
+      </div>
+      
+      <div class="search-result-container">
+        <ul id="search-result" class="search-result">
+        </ul>
+      </div>
+      
+    </div>
+    
+    <div class="main-container">
+      <div class="main" role="main">
+       
+        <div class="player-wrapper">
+          <div id="player"></div>
+        </div>
+        
+        <div class="video-info">
+          
+        </div>
+        
+      </div>
+    </div>
+   
+   
+    
+    
+    
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="public/css/styles.min.css">
+    <link rel="stylesheet" href="public/vendor/fontawesome/css/font-awesome.min.css">
+    
+    <script src="public/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="public/js/player.min.js"></script>
+    <script src="public/js/search.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script src="public/js/main.min.js"></script>
+  </body>
+</html>

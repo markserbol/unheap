@@ -1,0 +1,23 @@
+/**
+ * Media query mixin.
+ */
+
+@mixin breakpoint($point) {
+  @if $point == xs {
+    @media only screen and (min-width: 0) {
+      @content ; 
+    }
+  } @else if $point == sm {
+    @media only screen and (min-width: 768px) {
+      @content ; 
+    }
+  } @else if $point == md {
+    @media only screen and (min-width: 970px) {
+      @content ; 
+    }
+  } @else if $point == lg {
+    @media only screen and (min-width: 1170px) {
+      @content ; 
+    }
+  }
+}
