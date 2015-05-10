@@ -70,6 +70,12 @@
     margin-top: 20px;
   }
   
+  .description {
+    font-size: 12px;
+    color: rgba($color-text, 0.7);
+    padding-top: 10px;
+  }
+  
 }
 
 
@@ -103,6 +109,7 @@
     position: relative;
     cursor: pointer;
     background: #fff;
+    @include animate(fadeInDown);
     
     &.active {
       background: $color-tertiary;

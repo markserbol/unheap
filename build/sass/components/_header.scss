@@ -53,6 +53,10 @@
       padding: 0 20px;
     }
     
+    @include breakpoint(lg) {
+      padding-left: 340px;
+    }
+    
     .brand__name {
       margin: 0;
       height: $header-size;
