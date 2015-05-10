@@ -1,9 +1,13 @@
 .masthead {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: $header-size;
   background: #fff;
   border-bottom: 1px solid $color-border;
-  box-shadow: rgba(0, 0, 0, 0.04) 0 1px;
+  @include box-shadow();
+  z-index: 2;
   
   .toggle-btn {
     position: absolute;
@@ -20,6 +24,10 @@
     
     &:hover {
       background: #f1f1f1;
+    }
+    
+    @include breakpoint(sm) {
+      display: none;
     }
   }
   
@@ -38,6 +46,12 @@
     margin: 0 $header-size;
     text-align: center;
     color: $color-primary;
+    
+    @include breakpoint(sm) {
+      text-align: left;
+      margin: 0;
+      padding: 0 20px;
+    }
     
     .brand__name {
       margin: 0;

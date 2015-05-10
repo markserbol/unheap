@@ -11,24 +11,60 @@
 }
 
 body {
-  background: $color-secondary;
   font-family: 'Varela Round', sans-serif;
   font-size: 14px;
   font-weight: 300;
   color: $color-text;
+  background: #fff;
+  
+  @include breakpoint(lg) {
+    background: $color-tertiary;
+  }
 }
 
+
+.hide {
+  display: none;
+}
 
 .main-container {
-  max-width: 1200px;
   margin: 0 auto;
+  margin-top: $header-size;
+  position: relative;
+  
+  @include breakpoint(sm) {
+    margin-left: 320px;
+  }
+  
+  @include breakpoint(lg) {
+    margin: 74px 20px 20px 340px;
+  }
+  
+  .main-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .main {
+    @include breakpoint(lg) {
+      margin-right: 320px;
+    }
+  }
+  
 }
+
 
 .player-wrapper {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
   height: auto;
+  background: #fff;
+  
+  @include breakpoint(lg) {
+    @include box-shadow();
+  }
 }
 
 
@@ -45,4 +81,94 @@ body {
 .video-info {
   background: #fff;
   padding: 20px;
+  border-bottom: 1px solid $color-border;
+  
+  .video-title {
+    margin: 0 0 15px 0;
+  }
+  
+  .fa {
+    color: rgba($color-text, 0.7);
+    padding-right: 6px;
+    display: inline-block;
+  }
+  
+  @include breakpoint(lg) {
+    @include box-shadow();
+    margin-top: 20px;
+  }
+  
+}
+
+
+.playlist-container {
+  background: #fff;
+  
+  @include breakpoint(lg) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    @include box-shadow();
+  }
+  
+  .label {
+    padding: 20px 20px 0 20px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+
+.playlist {
+  padding: 10px 0;
+  margin: 0;
+  
+  li {
+    list-style: none;
+    padding: 10px 20px;
+    overflow: auto;
+    position: relative;
+    
+    &.active {
+      background: $color-tertiary;
+      
+      &:after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 45px;
+        content: '\f16a';
+        font-family: FontAwesome;
+        font-size: 20px;
+        color: $color-primary;
+        display: block;
+        height: 32px;
+        width: 32px;
+        background: #fff;
+        border-radius: 50%;
+        margin: auto;
+        line-height: 30px;
+        text-align: center;
+      }
+      
+      .video-thumbnail {
+        opacity: 0.7;
+      }
+    }
+    
+    .video-thumbnail {
+      width: 80px;
+      display: block;
+      float: left;
+      margin-right: 20px;
+    }
+    
+    .video-title {
+      overflow: auto;
+      margin: 0;
+      font-size: 14px;
+    }
+    
+  }
 }
