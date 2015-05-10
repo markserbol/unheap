@@ -129,31 +129,22 @@ body {
     padding: 10px 20px;
     overflow: auto;
     position: relative;
+    cursor: pointer;
     
     &.active {
       background: $color-tertiary;
-      
-      &:after {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 45px;
-        content: '\f16a';
-        font-family: FontAwesome;
-        font-size: 20px;
-        color: $color-primary;
-        display: block;
-        height: 32px;
-        width: 32px;
-        background: #fff;
-        border-radius: 50%;
-        margin: auto;
-        line-height: 30px;
-        text-align: center;
-      }
+      border-left: 4px solid $color-primary;
       
       .video-thumbnail {
         opacity: 0.7;
+      }
+    }
+    
+    &:hover {
+      color: $color-primary;
+      
+      .controls {
+        display: block;
       }
     }
     
@@ -168,6 +159,28 @@ body {
       overflow: auto;
       margin: 0;
       font-size: 14px;
+    }
+    
+    .controls {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: $color-text;
+      color: #fff;
+      opacity: 0.5;
+      display: none;
+      
+      &:hover {
+        opacity: 1;
+      }
+      
+      span {
+        display: block;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
     }
     
   }

@@ -47,6 +47,7 @@ function addToPlaylist(videoId) {
   
   var video = searchList[videoId],
       listItem = $('<li>', {
+        'class': 'playlist-item',
         'data-video-id': videoId
       }),
       listItemThumb = $('<img>', { 
@@ -56,9 +57,13 @@ function addToPlaylist(videoId) {
       listItemTitle = $('<h3>', {
         'class': 'video-title',
         text: video.title
+      }),
+      listItemControls = $('<div>', {
+        'class': 'controls',
+        html: '<span id="remove-item"><i class="fa fa-close"></i></span>'
       });
   
-  listItem.append(listItemThumb).append(listItemTitle);
+  listItem.append(listItemThumb, [listItemTitle, listItemControls]);
   
   $('#playlist').append(listItem);
   
@@ -75,4 +80,11 @@ $(document).on('click', '#playlist li', function() {
   $(this).addClass('active').siblings().removeClass('active');
   
   buildVideoInfo(videoId);
+});
+
+
+$(document).on('click', '#remove-item', function(e) {
+  e.stopPropagation();
+  
+  $(this).closest('.playlist-item').remove();
 });
