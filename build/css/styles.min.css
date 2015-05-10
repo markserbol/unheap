@@ -1,9 +1,74 @@
 /**
+ * Variables, helpers and mixins
+ */
+/**
  * Media query mixin.
  */
 /**
  * Box-shadow
  */
+/**
+ * Page components
+ */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+
+body {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #5B6064;
+  background: #fff;
+  height: 100%;
+  overflow: hidden; }
+  @media only screen and (min-width: 1170px) {
+    body {
+      background: #f1f1f1; } }
+  body.search-ready.player-ready .preloader {
+    display: none; }
+  body.search-ready.player-ready .content-wrapper {
+    display: block; }
+  body .content-wrapper {
+    height: 100%;
+    display: none;
+    overflow-y: auto; }
+
+.preloader {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #EC2828;
+  border-radius: 100%;
+  -webkit-animation: scaleout 1.0s infinite ease-in-out;
+  animation: scaleout 1.0s infinite ease-in-out; }
+
+@-webkit-keyframes scaleout {
+  0% {
+    -webkit-transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0; } }
+@keyframes scaleout {
+  0% {
+    transform: scale(0);
+    -webkit-transform: scale(0); }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 0; } }
+.hide {
+  display: none; }
+
 .masthead {
   position: fixed;
   top: 0;
@@ -141,30 +206,6 @@
         display: block;
         color: rgba(91, 96, 100, 0.7);
         font-size: 0.84em; }
-
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-body {
-  font-family: 'Varela Round', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: #5B6064;
-  background: #fff; }
-  @media only screen and (min-width: 1170px) {
-    body {
-      background: #f1f1f1; } }
-  body.search-ready.player-ready .preloader {
-    display: none; }
-  body.search-ready.player-ready .content-wrapper {
-    display: block; }
-  body .content-wrapper {
-    display: none; }
-
-.hide {
-  display: none; }
 
 .main-container {
   margin: 0 auto;
