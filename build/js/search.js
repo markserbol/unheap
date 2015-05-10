@@ -59,7 +59,7 @@ function buildSearchList(data) {
           html: [
             '<h3 class="title">' + item.snippet.title + '</h3>',
             '<span class="channel">by ' + item.snippet.channelTitle + '</span>',
-            '<span class="views"></span>'
+            '<span class="views">&nbsp;</span>'
           ].join('')
         });
 
@@ -71,6 +71,7 @@ function buildSearchList(data) {
     searchList[item.id.videoId] = {
       videoId: item.id.videoId,
       title: item.snippet.title,
+      description: item.snippet.description,
       thumbnail: item.snippet.thumbnails.default.url,
       channelTitle: item.snippet.channelTitle,
       channelId: item.snippet.channelId

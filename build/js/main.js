@@ -76,6 +76,7 @@ function buildVideoInfo(videoId) {
   videoInfo.find('.video-title').text(video.title);
   videoInfo.find('.video-channel').text(video.channelTitle);
   videoInfo.find('.video-views').text(video.viewCount);
+  videoInfo.find('.description').text(video.description);
   
 }
 
