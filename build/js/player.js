@@ -1,7 +1,7 @@
 // Load the Iframe Player API code asynchronously.
 var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
 
-tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -10,7 +10,6 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // after the API code downloads.
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
-   // height: '390',
     width: '640',
     playerVars: {rel: 0, theme: 'light', color: 'white'},
     events: {
@@ -21,28 +20,22 @@ function onYouTubeIframeAPIReady() {
 }
 
 
-// The API will call this function when the video player is ready.
+//The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  //event.target.playVideo();
+  $('body').addClass('player-ready');
 }
+
 
 // The API calls this function when the player's state changes.
 // The function indicates that when playing a video (state=1),
 // the player should play for six seconds and then stop.
-
 function onPlayerStateChange(event) {
+  // When the video ended load the next video on the playlist.
   if (event.data === YT.PlayerState.ENDED) {
-    console.log('end');
-    
-    var activeVideo = $('#playlist').find('.active'),
-        nextVideo = activeVideo.next();
+    var nextVideo = $('#playlist').find('.active').next();
     
     if(nextVideo) {
       nextVideo.trigger('click');
     }
   }
-}
-
-function stopVideo() {
-  player.stopVideo();
 }

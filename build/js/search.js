@@ -1,5 +1,4 @@
-// Upon loading, the Google APIs JS client automatically invokes this callback.
-
+// Upon loading, the Google APIs JS client invokes this callback.
 googleApiClientReady = function() {
   gapi.client.setApiKey(API_KEY);
   loadAPIClientInterfaces();
@@ -17,41 +16,34 @@ function loadAPIClientInterfaces() {
 // After the API loads, call a function to enable the search box.
 function handleAPILoaded() {
   $('#query').attr('disabled', false);
+  $('body').addClass('search-ready');
 }
+
 
 // Search for a specified string.
 function search() {
-  
-  console.log('search');
-  
-  
-  
-  var q = $('#query').val();
-  var request = gapi.client.youtube.search.list({
-    q: q,
+  gapi.client.youtube.search.list({
+    q: $('#query').val(),
     part: 'snippet',
     maxResults: 20
-  });
-  
-  request.execute(buildSearchList);
-  
+  }).execute(buildSearchList); 
 }
 
 
+// Build the search result list
 function buildSearchList(data) {
-  console.log(data);
-  
+  // clear previous search results
   clearSearchResults();
     
   var list = [],
       videoIdArray = [];
 
+  // Loop through the items and append on the result list.
   for(var i in data.items) {
 
-    var item = data.items[i];
-    
-
-    var itemContainer = $('<li>', { 
+    var item = data.items[i],
+        
+        itemContainer = $('<li>', { 
           id: item.id.videoId,
           'data-video-id': item.id.videoId,
           'data-video-title': item.snippet.title,
@@ -71,12 +63,11 @@ function buildSearchList(data) {
           ].join('')
         });
 
-    itemContainer.append(itemThumb).append(itemInfo);
+    itemContainer.append(itemThumb, [itemInfo]);
 
     list.push(itemContainer.prop('outerHTML'));
     
-    //
-    videoIdArray.push(item.id.videoId);
+    // Add the video data in a global object
     searchList[item.id.videoId] = {
       videoId: item.id.videoId,
       title: item.snippet.title,
@@ -84,28 +75,35 @@ function buildSearchList(data) {
       channelTitle: item.snippet.channelTitle,
       channelId: item.snippet.channelId
     };
+    
+    // Push the id to the array, which later on needed for video query.
+    videoIdArray.push(item.id.videoId);
 
   }
 
+  // Append all the results in the list
   $('#search-result').append(list.join(''));
 
+  // The search list API does not include the video stats.
+  // Since we need to show the view count we need perform a video query
   getVideoStats(videoIdArray);
   
 }
 
 
+// Perform a GET JSON video query to request the video statistics.
 function getVideoStats(videoIdArray) {
   
   var vidStatsUrl = [
-    'https://www.googleapis.com/youtube/v3/videos?',
-    'part=statistics',
+    'https://www.googleapis.com/youtube/v3/videos',
+    '?part=statistics',
     '&id=' + videoIdArray.join(','),
     '&key=' + API_KEY
-  ];
+  ].join('');
 
-  $.getJSON(vidStatsUrl.join(''), function(response) {
-    console.log('resp', response);
+  $.getJSON(vidStatsUrl, function(response) {
 
+    // Loop through the items and append the data on the search result.
     for(var i in response.items) {
       var item = response.items[i],
           viewCount = item.statistics.viewCount;
@@ -123,6 +121,7 @@ function getVideoStats(videoIdArray) {
 }
 
 
+// A helper function for clearing the search list.
 function clearSearchResults() {
   $('#search-result').empty();
 }
