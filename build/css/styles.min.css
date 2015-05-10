@@ -241,12 +241,15 @@ body {
     padding: 10px 20px;
     overflow: auto;
     position: relative;
-    cursor: pointer; }
+    cursor: pointer;
+    background: #fff; }
     .playlist li.active {
       background: #f1f1f1;
       border-left: 4px solid #EC2828; }
       .playlist li.active .video-thumbnail {
         opacity: 0.7; }
+    .playlist li.sortable-ghost {
+      background: #23282A; }
     .playlist li:hover {
       color: #EC2828; }
       .playlist li:hover .controls {

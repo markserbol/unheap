@@ -130,6 +130,7 @@ body {
     overflow: auto;
     position: relative;
     cursor: pointer;
+    background: #fff;
     
     &.active {
       background: $color-tertiary;
@@ -138,6 +139,10 @@ body {
       .video-thumbnail {
         opacity: 0.7;
       }
+    }
+    
+    &.sortable-ghost {
+      background: $color-secondary;
     }
     
     &:hover {

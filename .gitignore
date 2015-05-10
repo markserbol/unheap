@@ -4,4 +4,4 @@
 /bower_components/
 /node_modules/
 /public/vendor/
-*/.sass-cache
+/build/sass/.sass-cache/

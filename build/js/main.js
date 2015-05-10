@@ -28,6 +28,28 @@ $(document).on('click', '#search-result li', function() {
   
 });
 
+$(document).on('click', '#playlist li', function() {
+  var videoId = $(this).data('video-id');
+  player.loadVideoById({ videoId: videoId });
+  $(this).addClass('active').siblings().removeClass('active');
+  
+  buildVideoInfo(videoId);
+});
+
+
+$(document).on('click', '#remove-item', function(e) {
+  e.stopPropagation();
+  
+  $(this).closest('.playlist-item').remove();
+});
+
+
+$(document).ready(function() {
+  Sortable.create(
+    document.getElementById("playlist")
+  );
+});
+
 
 function buildVideoInfo(videoId) {
   
@@ -72,19 +94,3 @@ function addToPlaylist(videoId) {
   }
   
 }
-
-
-$(document).on('click', '#playlist li', function() {
-  var videoId = $(this).data('video-id');
-  player.loadVideoById({ videoId: videoId });
-  $(this).addClass('active').siblings().removeClass('active');
-  
-  buildVideoInfo(videoId);
-});
-
-
-$(document).on('click', '#remove-item', function(e) {
-  e.stopPropagation();
-  
-  $(this).closest('.playlist-item').remove();
-});
