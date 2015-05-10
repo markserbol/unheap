@@ -8,68 +8,107 @@
     <title>Unheap</title>
     
     <link rel="stylesheet" href="public/vendor/normalize.css/normalize.css">
+    
+    <style>
+      .preloader {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #EC2828;
+        border-radius: 100%;  
+        -webkit-animation: scaleout 1.0s infinite ease-in-out;
+        animation: scaleout 1.0s infinite ease-in-out;
+      }
+
+      @-webkit-keyframes scaleout {
+        0% { -webkit-transform: scale(0.0) }
+        100% {
+          -webkit-transform: scale(1.0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes scaleout {
+        0% { 
+          transform: scale(0.0);
+          -webkit-transform: scale(0.0);
+        } 100% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
   
   <body>
+  
+    <div class="preloader"></div>
    
-    <div class="masthead">
-      <div class="brand">
-        <h1 class="brand__name">Unheap</h1>
+    <div class="content-wrapper">
+     
+      <div class="masthead">
+        <div class="brand">
+          <h1 class="brand__name">Unheap</h1>
+        </div>
+        <button class="collapse-search-toggle toggle-btn">
+          <i class="fa fa-search"></i>
+        </button>
+
+        <button class="collapse-playlist-toggle toggle-btn">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div> 
+
+      <div class="search-panel collapsed sidebar">
+        <div class="search-form">
+          <label class="label" for="query"><i class="fa fa-search"></i></label>
+          <input id="query" class="search-form-input" placeholder="Search" autocomplete="off" disabled>
+        </div>
+
+        <div class="search-result-container">
+          <ul id="search-result" class="search-result">
+          </ul>
+        </div>
+
       </div>
-      <button class="collapse-search-toggle toggle-btn">
-        <i class="fa fa-search"></i>
-      </button>
-      
-      <button class="collapse-playlist-toggle toggle-btn">
-        <i class="fa fa-bars"></i>
-      </button>
-    </div> 
-    
-    <div class="search-panel collapsed sidebar">
-      <div class="search-form">
-        <label class="label" for="query"><i class="fa fa-search"></i></label>
-        <input id="query" class="search-form-input" placeholder="Search" autocomplete="off" disabled>
-      </div>
-      
-      <div class="search-result-container">
-        <ul id="search-result" class="search-result">
-        </ul>
+
+      <div class="main-container">
+
+        <div class="main-inner">
+        <div class="main" role="main">
+
+          <div class="player-wrapper">
+            <div id="player"></div>
+          </div>
+
+          <div class="video-info hide">
+            <h3 class="video-title"></h3>
+            <div id="channel">
+              <i class="fa fa-user"></i> 
+              <a class="video-channel"></a>
+            </div>
+            <div>
+              <i class="fa fa-eye"></i> 
+              <span class="video-views"></span>
+            </div>
+          </div>
+        </div>  
+
+        <div class="playlist-container">
+          <h5 class="label">Playlist</h5>
+          <ul id="playlist" class="playlist"></ul>
+        </div>
+
+        </div>
       </div>
       
     </div>
-    
-    <div class="main-container">
-      
-      <div class="main-inner">
-      <div class="main" role="main">
-       
-        <div class="player-wrapper">
-          <div id="player"></div>
-        </div>
-        
-        <div class="video-info hide">
-          <h3 class="video-title"></h3>
-          <div id="channel">
-            <i class="fa fa-user"></i> 
-            <a class="video-channel"></a>
-          </div>
-          <div>
-            <i class="fa fa-eye"></i> 
-            <span class="video-views"></span>
-          </div>
-        </div>
-      </div>  
-        
-      <div class="playlist-container">
-        <h5 class="label">Playlist</h5>
-        <ul id="playlist" class="playlist"></ul>
-      </div>
-        
-      </div>
-    </div>
-   
-   
-    
     
     
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>

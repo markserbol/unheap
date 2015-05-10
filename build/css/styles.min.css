@@ -156,6 +156,12 @@ body {
   @media only screen and (min-width: 1170px) {
     body {
       background: #f1f1f1; } }
+  body.search-ready.player-ready .preloader {
+    display: none; }
+  body.search-ready.player-ready .content-wrapper {
+    display: block; }
+  body .content-wrapper {
+    display: none; }
 
 .hide {
   display: none; }

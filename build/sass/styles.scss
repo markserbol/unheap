@@ -20,6 +20,23 @@ body {
   @include breakpoint(lg) {
     background: $color-tertiary;
   }
+  
+  &.search-ready.player-ready {
+    
+    .preloader {
+      display: none;
+    }
+    
+    .content-wrapper {
+      display: block;
+    }
+    
+  }
+  
+  .content-wrapper {
+    display: none;
+  }
+  
 }
 
 
