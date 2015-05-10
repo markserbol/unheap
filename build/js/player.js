@@ -8,8 +8,6 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // This function creates an <iframe> (and YouTube player)
 // after the API code downloads.
-var player;
-
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
    // height: '390',
@@ -33,9 +31,15 @@ function onPlayerReady(event) {
 // the player should play for six seconds and then stop.
 
 function onPlayerStateChange(event) {
-  if (event.data === YT.PlayerState.PLAYING) {
-//    setTimeout(stopVideo, 6000);
-//    done = true;
+  if (event.data === YT.PlayerState.ENDED) {
+    console.log('end');
+    
+    var activeVideo = $('#playlist').find('.active'),
+        nextVideo = activeVideo.next();
+    
+    if(nextVideo) {
+      nextVideo.trigger('click');
+    }
   }
 }
 

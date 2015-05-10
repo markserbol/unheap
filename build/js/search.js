@@ -1,5 +1,4 @@
 // Upon loading, the Google APIs JS client automatically invokes this callback.
-var API_KEY = 'AIzaSyAtCv37HZUzW9jeWv5X8-9IjPddeEil_Dc';
 
 googleApiClientReady = function() {
   gapi.client.setApiKey(API_KEY);
@@ -25,7 +24,7 @@ function search() {
   
   console.log('search');
   
-  clearSearchResults();
+  
   
   var q = $('#query').val();
   var request = gapi.client.youtube.search.list({
@@ -41,6 +40,8 @@ function search() {
 
 function buildSearchList(data) {
   console.log(data);
+  
+  clearSearchResults();
     
   var list = [],
       videoIdArray = [];
@@ -48,8 +49,7 @@ function buildSearchList(data) {
   for(var i in data.items) {
 
     var item = data.items[i];
-
-    videoIdArray.push(item.id.videoId);
+    
 
     var itemContainer = $('<li>', { 
           id: item.id.videoId,
@@ -74,6 +74,16 @@ function buildSearchList(data) {
     itemContainer.append(itemThumb).append(itemInfo);
 
     list.push(itemContainer.prop('outerHTML'));
+    
+    //
+    videoIdArray.push(item.id.videoId);
+    searchList[item.id.videoId] = {
+      videoId: item.id.videoId,
+      title: item.snippet.title,
+      thumbnail: item.snippet.thumbnails.default.url,
+      channelTitle: item.snippet.channelTitle,
+      channelId: item.snippet.channelId
+    };
 
   }
 
@@ -104,6 +114,8 @@ function getVideoStats(videoIdArray) {
         .attr('data-video-views', viewCount)
         .data('video-views', viewCount)
         .find('.views').html(viewCount + ' views');
+      
+      searchList[item.id].viewCount = viewCount;
     }
 
   });

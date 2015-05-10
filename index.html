@@ -27,6 +27,7 @@
     
     <div class="search-panel collapsed sidebar">
       <div class="search-form">
+        <label class="label" for="query"><i class="fa fa-search"></i></label>
         <input id="query" class="search-form-input" placeholder="Search" autocomplete="off" disabled>
       </div>
       
@@ -38,15 +39,31 @@
     </div>
     
     <div class="main-container">
+      
+      <div class="main-inner">
       <div class="main" role="main">
        
         <div class="player-wrapper">
           <div id="player"></div>
         </div>
         
-        <div class="video-info">
-          
+        <div class="video-info hide">
+          <h3 class="video-title"></h3>
+          <div id="channel">
+            <i class="fa fa-user"></i> 
+            <a class="video-channel"></a>
+          </div>
+          <div>
+            <i class="fa fa-eye"></i> 
+            <span class="video-views"></span>
+          </div>
         </div>
+      </div>  
+        
+      <div class="playlist-container">
+        <h5 class="label">Playlist</h5>
+        <ul id="playlist" class="playlist"></ul>
+      </div>
         
       </div>
     </div>
@@ -60,9 +77,10 @@
     <link rel="stylesheet" href="public/vendor/fontawesome/css/font-awesome.min.css">
     
     <script src="public/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="public/js/player.min.js"></script>
-    <script src="public/js/search.min.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
     <script src="public/js/main.min.js"></script>
+    <script src="public/js/search.min.js"></script>
+    <script src="public/js/player.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    
   </body>
 </html>
