@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  background: #f1f1f1;
+  background: #fff;
   transition: all 0.4s ease;
   opacity: 1;
   z-index: 2;
@@ -18,14 +18,11 @@
   
   @include breakpoint(sm) {
     left: 0!important;
+    top: 0;
     opacity: 1!important;
     width: 320px;
     border-right: 1px solid $color-border;
-  }
-  
-  
-  @include breakpoint(lg) {
-    top: 0;
+    background: #fff;
   }
   
 }
@@ -36,10 +33,11 @@
   line-height: 50px;
   border-bottom: 1px solid $color-border;
   position: relative;
-  @include box-shadow();
+  overflow: auto;
   
-  @include breakpoint(lg) {
-    height: 54px;
+  @include breakpoint(sm) {
+    height: $header-size + 10px;
+    width: 320px;
   }
   
   .search-form-input {
@@ -53,6 +51,11 @@
     
     @include breakpoint(sm) {
       padding-left: 40px;
+      width: 292px;
+      height: 36px;
+      margin: 14px;
+      border: 1px solid $color-border;
+      border-radius: 18px;
     }
   }
   
@@ -60,8 +63,9 @@
     display: none;
     position: absolute;
     top: 0;
-    left: 20px;
+    left: 30px;
     color: rgba($color-text, 0.7);
+    line-height: $header-size + 10px;
     
     @include breakpoint(sm) {
       display: block;
@@ -78,9 +82,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background: $color-tertiary;
   
-  @include breakpoint(lg) {
-    top: 54px;
+  @include breakpoint(sm) {
+    top: $header-size + 10px;
   }
 }
 
@@ -108,6 +113,7 @@
       display: block;
       width: 80px;
       float: left;
+      border-radius: 3px;
     }
     
     .item-info {
@@ -116,6 +122,7 @@
       
       .title {
         font-size: 15px;
+        font-weight: 300;
         margin: 0 0 10px 0;
       }
       

@@ -6,24 +6,35 @@
   height: $header-size;
   background: #fff;
   border-bottom: 1px solid $color-border;
-  @include box-shadow();
   z-index: 2;
+  
+  @include breakpoint(sm) {
+    height: $header-size + 10px;
+  }
   
   .toggle-btn {
     position: absolute;
     top: 0;
-    height: $header-size;
-    width: $header-size;
+    height: $header-size - 14px;
+    width: $header-size - 14px;
+    margin: 7px;
     padding: 0;
     background: none;
     border-color: $color-border;
     border-style: solid;
-    font-size: 20px;
+    font-size: 18px;
     color: rgba($color-text, 0.74);
     outline: 0;
+    border-radius: 50%;
+    border: 0;
     
     &:hover {
       background: #f1f1f1;
+    }
+    
+    &.active {
+      background: $color-primary;
+      color: #fff;
     }
     
     @include breakpoint(sm) {
@@ -33,35 +44,38 @@
   
   .collapse-search-toggle {
     left: 0;
-    border-width: 0 1px 1px 0;
   }
   
   .collapse-playlist-toggle {
     right: 0;
-    border-width: 0 0 1px 1px;
   }
   
   
   .brand {
     margin: 0 $header-size;
     text-align: center;
-    color: $color-primary;
     
     @include breakpoint(sm) {
       text-align: left;
       margin: 0;
       padding: 0 20px;
-    }
-    
-    @include breakpoint(lg) {
       padding-left: 340px;
     }
     
     .brand__name {
       margin: 0;
-      height: $header-size;
       line-height: $header-size;
       font-size: 24px;
+      font-weight: normal;
+      
+      @include breakpoint(sm) {
+        line-height: $header-size + 10px;
+      }
+      
+      span {
+        color: $color-primary;
+        font-weight: bold;
+      }
     }
   }
   

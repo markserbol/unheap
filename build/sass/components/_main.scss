@@ -3,25 +3,41 @@
   margin: 0 auto;
   margin-top: $header-size;
   position: relative;
+  background: #fff;
   
   @include breakpoint(sm) {
     margin-left: 320px;
+    margin-top: $header-size + 10px;
   }
   
   @include breakpoint(lg) {
-    margin: 74px 20px 20px 340px;
+    margin: $header-size + 10px 0 20px 320px;
   }
   
   .main-inner {
-    max-width: 1080px;
+    max-width: 1120px;
     margin: 0 auto;
     position: relative;
   }
   
   .main {
+    overflow: auto;
+    
     @include breakpoint(lg) {
-      margin-right: 320px;
+      margin-right: 300px;
+      
+      &:before {
+        content: '';
+        position: fixed;
+        right: 300px;
+        top: $header-size + 10px;
+        bottom: 0;
+        background: $color-border;
+        width: 1px;
+      }
+      
     }
+    
   }
   
 }
@@ -33,9 +49,11 @@
   padding-top: 30px;
   height: auto;
   background: #fff;
+  border-radius: 3px;
+  overflow: hidden;
   
   @include breakpoint(lg) {
-    @include box-shadow();
+    margin: 20px;
   }
 }
 
@@ -51,23 +69,19 @@
 
 
 .video-info {
-  background: #fff;
   padding: 20px;
   border-bottom: 1px solid $color-border;
   
   .video-title {
     margin: 0 0 15px 0;
+    font-weight: 300;
+    font-size: 20px;
   }
   
   .fa {
     color: rgba($color-text, 0.7);
     padding-right: 6px;
     display: inline-block;
-  }
-  
-  @include breakpoint(lg) {
-    @include box-shadow();
-    margin-top: 20px;
   }
   
   .description {
@@ -80,20 +94,20 @@
 
 
 .playlist-container {
-  background: #fff;
   
   @include breakpoint(lg) {
     position: absolute;
     top: 0;
     right: 0;
     width: 300px;
-    @include box-shadow();
   }
   
   .label {
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 10px;
     margin: 0;
     text-transform: uppercase;
+    color: $color-primary;
+    letter-spacing: 1px;
   }
 }
 
@@ -109,7 +123,6 @@
     position: relative;
     cursor: pointer;
     background: #fff;
-    @include animate(fadeInDown);
     
     &.active {
       background: $color-tertiary;
@@ -121,7 +134,12 @@
     }
     
     &.sortable-ghost {
-      background: $color-secondary;
+      background: $color-text;
+      color: #fff;
+    }
+    
+    &:not(.sortable-ghost) {
+      @include animate(fadeInDown);
     }
     
     &:hover {
@@ -137,25 +155,26 @@
       display: block;
       float: left;
       margin-right: 20px;
+      border-radius: 3px;
     }
     
     .video-title {
       overflow: auto;
       margin: 0;
       font-size: 14px;
+      font-weight: 300;
     }
     
     .controls {
       position: absolute;
       top: 0;
       right: 0;
-      background: $color-text;
+      background: rgba($color-text, 0.5);
       color: #fff;
-      opacity: 0.5;
       display: none;
       
       &:hover {
-        opacity: 1;
+        background: $color-text;
       }
       
       span {
